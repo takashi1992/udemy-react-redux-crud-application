@@ -1,29 +1,37 @@
-import React, { Profiler } from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
 function App() {
-
   const profiles = [
-    {name:"Taro", age:10},
-    {name:"no Name"},
-    {name:"Hanako", age:5}
-  ]
-  const dom = 
+    { name: "Taro", age: 10 },
+    { name: "Noname" },
+    { name: "Hanako", age: 5 },
+  ];
+  const dom = (
     <React.Fragment>
-      {
-        profiles.map((profile, index) => {
-          return <User name={profile.name} age={profile.age} key={index}/>
-        })
-      }
+      {profiles.map((profile, index) => {
+        return <User name={profile.name} age={profile.age} key={index} />;
+      })}
     </React.Fragment>
-  return (dom);
+  );
+  return dom;
 }
 
 function User(props) {
-  return <div>Hi, I am {props.name}! and {props.age} years old!</div>
+  return (
+    <div>
+      Hi, I am {props.name}! and {props.age} years old!
+    </div>
+  );
 }
 
 User.defaultProps = {
-  age : 1
-}
+  age: 1,
+};
+
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
+};
 
 export default App;
