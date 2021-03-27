@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 
 function App() {
 
+  const profiles = [
+    {name:"Taro", age:10},
+    {name:"no Name"},
+    {name:"Hanako", age:5}
+  ]
   const dom = 
     <React.Fragment>
-      <label htmlFor="bar">bar</label>
-      <input type="text" onChange={ () =>{console.log("I am clicked")}}/>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index}/>
+        })
+      }
     </React.Fragment>
   return (dom);
+}
+
+function User(props) {
+  return <div>Hi, I am {props.name}! and {props.age} years old!</div>
+}
+
+User.defaultProps = {
+  age : 1
 }
 
 export default App;
