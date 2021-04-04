@@ -9,3 +9,7 @@ export const readEvents = () => async dispatch => {
     const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`)
     dispatch({type: READ_EVENTS, response})
 }
+
+export const postEvent = () => async dispatch => {
+    
+}
